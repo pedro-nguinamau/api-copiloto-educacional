@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Aluno {
+  id Int @id @default(autoincrement())
+  nomeCompleto String
+  email String @unique
+  password String
+  classe Classe?
+  curso Curso?
+  chat Chat[]
+  }
+
+model Classe {
+  id Int @id @default(autoincrement())
+  classe Int
+  aluno Aluno @relation(fields: [alunoClasseId], references: [id])
+  alunoClasseId Int @unique
+} 
+
+model Curso {
+  id Int @id @default(autoincrement())
+  nomeCurso String
+  aluno Aluno @relation(fields: [alunoCursoId], references: [id])
+  alunoCursoId Int @unique
+  disciplinas Disciplinas[]
+}
+
+model Disciplinas {
+  id Int @id @default(autoincrement())
+  nome String
+  curso Curso @relation(fields: [cursoId], references: [id])
+  cursoId Int
+  chat Chat[]
+}
+
+model Chat {
+  id           Int        @id @default(autoincrement())
+  alunoId      Int
+  disciplinaId Int
+  mensagens    Mensagem[]
+  createdAt    DateTime   @default(now())
+  aluno        Aluno      @relation(fields: [alunoId], references: [id])
+  disciplina   Disciplinas @relation(fields: [disciplinaId], references: [id])
+}
+
+model Mensagem {
+  id        Int      @id @default(autoincrement())
+  chatId    Int
+  role      String   // "user" ou "assistant"
+  conteudo  String
+  createdAt DateTime @default(now())
+  chat      Chat     @relation(fields: [chatId], references: [id])
+}
