@@ -77,6 +77,7 @@ export async function userRoutes(app: Type) {
       }
     )
     const aluno = data[0]
+    const alunoId = aluno.id
     const cursoaluno = aluno.curso?.nomeCurso
     const classeAluno = aluno.classe?.rotulo
     const idclasse = aluno.classe?.id
@@ -87,15 +88,18 @@ export async function userRoutes(app: Type) {
         cursoId: idcurso, classeId: idclasse
        }
     });  
+    
     const nomesDisciplinas = disciplinas.map((disciplina) => disciplina.nome);
     return {
+      alunoId,
       nome: aluno.nomeCompleto,
       classe: classeAluno,
       curso: cursoaluno,
-      disciplina: nomesDisciplinas
+      disciplina: disciplinas.map(d => ({
+        id: d.id,      // Agora retorna o ID da disciplina
+        nome: d.nome,  // Nome da disciplina
+      }))
     }
-
-    
   })
 
 }
