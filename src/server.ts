@@ -4,7 +4,6 @@ import { userRoutes } from "./routes/user";
 import { ChatRoutes } from "./routes/chat";
 import cors from '@fastify/cors'
 import { MessagesRoutes } from "./routes/messages";
-
 const server = fastify()
 
 
@@ -21,7 +20,6 @@ server.register(cors, {
    server.get('/', (request, reply) => {
     reply.send('Consumindo-Api-com-Typescript-e-Fastify')
 })
-
 
 server.listen({port: 3333}, async (err, adress) => {
     if(err) {

@@ -38,4 +38,43 @@ export default async function Disciplinas() {
     ]
   })
   console.log('Disciplinas criadas com sucesso!');
-} 
+}
+
+export async function Contabilidade() {
+  await prisma.disciplina.createMany({
+    data:[
+      
+      { nome: 'Língua Portuguesa', classeId: 1, cursoId: 2 },
+      { nome: 'Matemática', classeId: 1, cursoId: 2 },
+      { nome: 'Documentação e Legislação Comercial (DLC)', classeId: 1, cursoId: 2 },
+      { nome: 'Formação de Atitudes Integradoras (FAI)', classeId: 1, cursoId: 2 },
+      { nome: 'Língua Inglesa', classeId: 1, cursoId: 2 },
+      { nome: 'Economia', classeId: 1, cursoId: 2 },
+      { nome: 'Educação Física', classeId: 1, cursoId: 2 },
+      { nome: 'Contabilidade Financeira', classeId: 1, cursoId: 2 },
+
+      // 11ª Classe
+      { nome: 'Língua Portuguesa', classeId: 2, cursoId: 2 },
+      { nome: 'Matemática', classeId: 2, cursoId: 2 },
+      { nome: 'Língua Inglesa', classeId: 2, cursoId: 2 },
+      { nome: 'Educação Física', classeId: 2, cursoId: 2 },
+      { nome: 'Sociologia', classeId: 2, cursoId: 2 },
+      { nome: 'Direito', classeId: 2, cursoId: 2 },
+      { nome: 'Contabilidade Financeira', classeId: 2, cursoId: 2 },
+      { nome: 'Organização e Gestão Empresarial (OGE)', classeId: 2, cursoId: 2 },
+
+      // 12ª Classe
+      { nome: 'Documentação e Legislação Fiscal', classeId: 3, cursoId: 2 },
+      { nome: 'Gestão Orçamental', classeId: 3, cursoId: 2 },
+      { nome: 'Organização e Gestão Empresarial (OGE)', classeId: 3, cursoId: 2 },
+      { nome: 'Contabilidade Analítica', classeId: 3, cursoId: 2 },
+      { nome: 'Análise Económica e Financeira', classeId: 3, cursoId: 2 },
+      { nome: 'Cálculo Financeiro e Estatística', classeId: 3, cursoId: 2 },
+      { nome: 'Língua Portuguesa', classeId: 3, cursoId: 2 },
+      { nome: 'Matemática', classeId: 3, cursoId: 2 }
+
+    ] 
+  })
+
+  console.log('Sucess')
+}
